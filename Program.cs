@@ -92,6 +92,40 @@ DateTime now=new DateTime(2020,7,15,3,16,12);
         var s=new ChainingConstructors(30);
         Console.WriteLine(s);
 
+        //properties
+        var r=new Properties();
+        Console.WriteLine(r);
+
+        //Using default values
+        var defaults=new DefaultValues();
+        Console.WriteLine(defaults);
+
+        //using expression body definition and 
+var e=new ExpressionBodyDefinition();
+e.FirstName="Eli";
+e.LastName="Malone";
+Console.WriteLine(e);
+
+//fields to assign flexible data
+var f=new Fields(new DateTime(1999,4,5));
+f.FirstName="Mark";
+f.LastName="Mark";
+Console.WriteLine(f);
+
+//Encapsulation
+var t=new Encapsulation("Erick","Fritz",new DateTime(1999,2,1));
+t.FirstName="Liam";
+t.isEnrolled=false;
+t.BirthDate=new DateTime(1999,3,2);
+Console.WriteLine(t);
+
+//constants
+var constant=new Constants("Leon","Jeffry",new DateTime(1992,2,3));
+Console.WriteLine(constant);
+
+//using record keyword
+var d=new Records.StudentRecords("Fritz","Svl",23);
+Console.WriteLine(d.ToString());
          }
     }
 
