@@ -172,9 +172,74 @@ Console.WriteLine(o.NameOfClass+" "+o.FinalScore);
 
 v.CalculateGrade(o);
 Console.WriteLine(o.NameOfClass+" "+o.FinalScore);
+
+//delegates
+var delegate_example=new CallBackFuncion();
+var calHandler=new CallBackFuncion.CalculateHandler(delegate_example.Add);
+delegate_example.Calculate(3,4,calHandler);
+
+var calcHandler=new CallBackFuncion.CalculateHandler(delegate_example.Subtract);
+delegate_example.Calculate(5,4,calcHandler);
+
+//anonymous method addition
+var multiply=new CallBackFuncion.CalculateHandler((foo,bar)=>foo*bar);
+Console.WriteLine(delegate_example.Calculate(4,5,multiply));
+
+var divide=new CallBackFuncion.CalculateHandler((foo,bar)=>foo/bar);
+Console.WriteLine(delegate_example.Calculate(12,4,divide));
+
+//direct call for a delegate
+delegate_example.Calculate(34,21,delegate_example.Add);
+
+//multicast delegation example
+var calculation=new CallBackFuncion.CalculateHandler(delegate_example.Subtract);
+calculation+=new CallBackFuncion.CalculateHandler(delegate_example.Add);
+calculation+=new CallBackFuncion.CalculateHandler((arg1,arg2)=>{
+var outMult=arg1*arg2;
+Console.WriteLine("Multiplied: "+outMult);
+return outMult;
+});
+calculation-=new CallBackFuncion.CalculateHandler(delegate_example.Subtract);
+delegate_example.Calculate(2,9,calculation);
+
+//ipmplementing a collection of delegates
+delegate_example.Calculate(6,3,delegate_example.Add,delegate_example.Subtract);
+
+//events
+var event_example=new EnrolledEvents();
+event_example.Enrolled+=(sender,args)=>Console.WriteLine("I am now enrolled for the year "+args.YearEnrolled);
+event_example.Enroll();
+
+//partial keyword
+
+
+var partial_keyword=new Teacher {Name="Fritz",BirthDate=new DateTime(2000,2,4)};
+Console.WriteLine(partial_keyword);
+partial_keyword.displayAge();
+
+//Enumerations
+LightSwitch hall=LightSwitch.Bright;
+Console.WriteLine(hall);
+
+//to get the index of the enumeration
+Console.WriteLine((int)LightSwitch.Off);
+
+//enumeration constant call from a class
+var enum_call=new Enrollment();
+Console.WriteLine(enum_call.Enroll());
+
+//flag enumerations
+var flag_enum=FileAccess.Read | FileAccess.Write |FileAccess.Execute|FileAccess.Delete;
+Console.WriteLine(flag_enum);
+
+var weekdays=DaysOfWeek.Monday|DaysOfWeek.Tuesday|DaysOfWeek.Wednesday|DaysOfWeek.Thursday|DaysOfWeek.Friday|DaysOfWeek.Saturday|DaysOfWeek.Sunday;
+
+Console.WriteLine(weekdays);
          }
     }
 
 
     
 }
+
+
