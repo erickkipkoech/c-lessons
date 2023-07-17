@@ -126,6 +126,52 @@ Console.WriteLine(constant);
 //using record keyword
 var d=new Records.StudentRecords("Fritz","Svl",23);
 Console.WriteLine(d.ToString());
+
+//Methods
+var n=new Methods();
+Console.WriteLine(n.CalculateGradesForClass("Quantam Physics"));
+
+var g=new Methods.Grade();
+Console.WriteLine(g);
+
+//overloaded methods
+var k=new Methods();
+Console.WriteLine(k.CalculateGradesForClass("Quantam Physics"));
+
+var l=new Methods();
+Console.WriteLine(l.CalculateGradesForClass("Quantam Physics",2019));
+
+//magic params parameter and optional parameters
+var j=new Methods();
+Console.WriteLine(j.CalculateGradePointAverage(2023,"Algebra","History","Geography","Maths","English","Programming"));
+
+var m=new Methods();
+Console.WriteLine(m.CalculateGradePointAverage(2019,"Art","History","Computer Science"));
+Console.WriteLine(m.CalculateGradePointAverage(classes: new[] {"Algebra","Art","History","Computer Science"}));
+Console.WriteLine(m.CalculateGradePointAverage());
+
+// out and ref
+var v=new OutAndRef();
+string id="";
+short year= (short)DateTime.Now.Year;
+Console.WriteLine(v.Enroll(year,out id));
+Console.WriteLine("student id: "+id);
+Console.WriteLine("Year: "+year);
+
+int myVar=2021;
+v.doSomething(ref myVar);
+Console.WriteLine("my var is "+myVar);
+
+string myNamme="Doe";
+v.Hello(ref myNamme);
+Console.WriteLine(myNamme);
+
+ //class reference
+var o=new OutAndRef.Grade(){NameOfClass="Literature",FinalScore=0.7m};
+Console.WriteLine(o.NameOfClass+" "+o.FinalScore);
+
+v.CalculateGrade(o);
+Console.WriteLine(o.NameOfClass+" "+o.FinalScore);
          }
     }
 
