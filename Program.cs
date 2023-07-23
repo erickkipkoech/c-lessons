@@ -235,10 +235,82 @@ Console.WriteLine(flag_enum);
 var weekdays=DaysOfWeek.Monday|DaysOfWeek.Tuesday|DaysOfWeek.Wednesday|DaysOfWeek.Thursday|DaysOfWeek.Friday|DaysOfWeek.Saturday|DaysOfWeek.Sunday;
 
 Console.WriteLine(weekdays);
-         }
+
+// simple if statement
+var seconds=DateTime.Now.Second;
+Console.WriteLine("Current seconds: "+seconds);
+// if statement to check if second is divisible by 2 
+if(seconds % 2==0){
+    Console.WriteLine("Seconds are even");
+
+}else{
+    Console.WriteLine("Seconds are odd");
+}
+
+//optionally we can ommit curly braces but write the whole condition on one line(ending with a ; )
+if (seconds % 2==0) Console.WriteLine("Seconds are even");
+if (seconds % 2 !=0) Console.WriteLine("Seconds are odd");
+
+    Console.WriteLine("This is outside the if statement");
+
+//else,else if condition
+if(seconds % 2==0) {Console.WriteLine("Seconds are even");}
+else if(seconds % 3==0){Console.WriteLine("Seconds are a multiple of 3");}
+else if(seconds % 5==0){Console.WriteLine("Seconds are a multiple of 5");}
+else if(seconds%10==0){Console.WriteLine("Seconds are a multiple of 2,5 and 10");}
+else{Console.WriteLine("Seconds are not divisible by 2,3,5 and 10");}
+
+var display=new SimpleIf();
+Console.WriteLine(display.CalculateMessage());
+//conditional AND logical operator
+bool MultipleOfThree(){
+    Console.WriteLine("MultipleOfThree was called");
+    return seconds%3==0;
+}
+if(seconds%2==0 && MultipleOfThree()){
+    Console.WriteLine("Seconds are multiples of 2 and 3");
+}
+if (seconds!=null && seconds%2==1){
+    Console.WriteLine("seconds are odd");
+}
+
+//conditional OR logical operator
+if(seconds%2==0 || MultipleOfThree()){
+    Console.WriteLine("Seconds are multiples of 2 0r 3");
+}
+
+//pattern matching using is
+object fruit=new Apple();
+
+if(fruit is Apple a){
+a.MakePie();
+}
+else if(fruit is Orange or){
+    or.MakeJuice();
+}else{
+    Console.WriteLine("I dont know what to use this fruit for");
+}
+//ternary conditional operators
+var result= seconds%2==0 ? "seconds are even" :"seconds are odd";
+Console.WriteLine(result);
+
+//chained ternary conditional operators
+//checker method
+string CheckIfMultipleOfThree(int seconds){
+    return seconds%3==0?"Even and Multiple of three":"Even";
+}
+
+result=seconds%2==0?CheckIfMultipleOfThree(seconds):"Odd";
+Console.WriteLine(result);
+
+var MultOfThree=seconds%3==0?"Even and Multiple of three":"Even";
+Console.WriteLine(seconds%2==0?"Even and multiple of 3":"Odd");
+
+//null coalescing operator ??
+var coalescingValue="test";
+Console.WriteLine(coalescingValue?? "It is null");
+}
     }
-
-
     
 }
 
