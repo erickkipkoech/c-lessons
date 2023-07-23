@@ -309,6 +309,87 @@ Console.WriteLine(seconds%2==0?"Even and multiple of 3":"Odd");
 //null coalescing operator ??
 var coalescingValue="test";
 Console.WriteLine(coalescingValue?? "It is null");
+
+//null conditional operator ?
+
+NullCondition test=new NullCondition{Name="Erick"};
+
+Console.WriteLine("Our student name is "+test?.Name);
+Console.WriteLine(test?.Hello());
+Console.WriteLine("Our student name is: "+(test?.Name ?? "is not assigned yet" ));
+
+//switch statement
+var dayOfWeek=DateTime.Now.DayOfWeek;
+dayOfWeek=DayOfWeek.Tuesday;
+switch(dayOfWeek){
+    case DayOfWeek.Monday: Console.WriteLine("Does somebody have a case of the Mondays?");
+    break;
+    case DayOfWeek.Tuesday: Console.WriteLine("It's TACO TUESDAY at the cafe!");
+    break;
+    case DayOfWeek.Wednesday: Console.WriteLine("Middle of the work-week... almost done!");
+    break;
+    case DayOfWeek.Thursday: Console.WriteLine("Friday is ALMOST HERE!!");
+    break;
+    case DayOfWeek.Friday: Console.WriteLine("The weekend starts.... NOW!");
+    break;
+    case DayOfWeek.Saturday: Console.WriteLine("Relaxing... no school, no work...");
+    break;
+    case DayOfWeek.Sunday: Console.WriteLine("School and work tomorrow?  Better have some fun NOW!");
+    break;
+    default: Console.WriteLine("I don't care what day of the week it is... we're on HOLIDAY!");
+    break;
+}
+//switch expression
+var message=dayOfWeek switch{
+    DayOfWeek.Monday=>"I've got a case of the Mondays",
+    DayOfWeek.Friday=>"It's FRI-YAY!!!",
+    _=>"Its a boring day"
+};
+
+Console.WriteLine(message);
+//for loops
+for(var counter=0;counter<=5;counter++){
+    Console.WriteLine("Counter now is: "+counter);
+}
+//infinite for loop
+for (var counter=0;counter>=0;counter++){
+    Console.WriteLine("On the road to infinity: "+counter);
+//break statement
+    if (counter==100) break;
+}
+//for each loops
+string[] arrayNames=new string[] {"One","Two","Three","Four","Five","Six"};
+
+foreach(var name in arrayNames){
+    Console.WriteLine(name);
+}
+//foreach loop abouve is the same as 
+for(var name=0;name<arrayNames.Length;name++){
+    Console.WriteLine(arrayNames[name]);
+}
+//using foreach with reference types
+var students=new Student[]{
+    new Student{FirstName="Edmond"},
+    new Student{FirstName="Eli"}
+};
+foreach(var student in students){
+    Console.WriteLine("Name: "+student.FirstName);
+//letters of each name
+    foreach(var letters in student.FirstName){
+        Console.WriteLine(letters);
+    }
+}
+//do while loops
+var Counter=4;
+while(Counter<5){
+    Counter++;
+    Console.WriteLine(Counter);
+}
+
+do{
+    Counter++;
+    Console.WriteLine(Counter);
+}while(Counter<5);
 }
     }
     
