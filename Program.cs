@@ -1,4 +1,6 @@
 ﻿
+using System.Collections;
+
 namespace HelloWorld
 {
     class Program
@@ -390,6 +392,204 @@ do{
     Counter++;
     Console.WriteLine(Counter);
 }while(Counter<5);
+
+
+//Collections
+//Arrays
+int[] numbers;
+
+// Numbers doesn't contain anything, as it wasn't assigned yet
+//Console.WriteLine("Array is created: " + (numbers == null).ToString());
+
+//Array that has been assigned
+numbers=new int[3];
+Console.WriteLine("Array is null: "+(numbers==null).ToString());
+
+Console.WriteLine("Array size: "+numbers?.Length);
+
+//array asigned and initial values declared
+var fullArrayOfNumbers=new int[3]{1,2,3};
+Console.WriteLine("Array assigned and values declared: "+fullArrayOfNumbers.Length );
+
+Console.WriteLine(fullArrayOfNumbers[0]);
+//you can set values to an index
+fullArrayOfNumbers[0]=5;
+Console.WriteLine(fullArrayOfNumbers[0]);
+
+//multi dimensional arrays
+var matrix=new int[3,2] {{1,2},{3,4},{5,6}};
+Console.WriteLine(matrix.Length);
+
+//to access an element
+Console.WriteLine(matrix[0,1]);
+
+//Working with arrays
+//This does not work when you want to resize (remove or add )values to an array
+//fullArrayOfNumbers.Add(4)
+
+//use this instead
+    //add
+Array.Resize(ref fullArrayOfNumbers,4);
+fullArrayOfNumbers[3]=4;
+Console.WriteLine(fullArrayOfNumbers.Length);
+    //remove
+Array.Resize(ref fullArrayOfNumbers,3);
+Console.WriteLine(fullArrayOfNumbers.Length);
+
+//iterataion with for loop
+foreach(var i in fullArrayOfNumbers){
+    Console.Write(i+", ");
+}
+ Console.WriteLine();
+
+ //array fill
+ var myArrayFill=new int[3];
+ Array.Fill(myArrayFill,9);
+ foreach(var i in myArrayFill){
+ Console.WriteLine(i);
+}
+
+//Hashtables
+var fileExt=new Hashtable();
+fileExt.Add("txt","Plain text");
+fileExt.Add("mp3","Compressed music");
+fileExt.Add("jpg","Jpeg Compressed image");
+foreach(var i in fileExt){Console.WriteLine(i);}
+
+Console.WriteLine(fileExt["mp3"]);
+
+//SortedList
+var fileExtSort=new SortedList();
+fileExtSort.Add("txt","Plain text");
+fileExtSort.Add("mp3","Compressed music");
+fileExtSort.Add("jpg","Jpeg Compressed image");
+foreach(var i in fileExt){Console.WriteLine(i);
+//display the key alone
+Console.WriteLine(((DictionaryEntry)i).Key);
+}
+Console.WriteLine(fileExtSort["jpg"]);
+
+
+//Queues
+var myQueue=new Queue();
+//insert queues
+myQueue.Enqueue("First");
+myQueue.Enqueue("Second");
+myQueue.Enqueue("Third");
+ foreach(var i in myQueue){
+    Console.WriteLine(i);
+ }
+ //count queues
+Console.WriteLine( myQueue.Count);
+
+//check the oldest item
+Console.WriteLine(myQueue.Peek());
+
+//remove the first item in FIFO
+var removedItem=myQueue.Dequeue();
+Console.WriteLine(removedItem);
+
+foreach(var i in myQueue){
+    Console.WriteLine(i);
+}
+
+//Stack
+var stack=new Stack();
+stack.Push("A-d");
+stack.Push("A-s");
+stack.Push("9-h");
+stack.Push("9-s");
+stack.Push("9-c");
+
+foreach(var i in stack){
+    Console.WriteLine(i);
+}
+
+var topStack=stack.Peek();
+Console.WriteLine(topStack);
+
+removedItem=stack.Pop();
+Console.WriteLine(removedItem);
+
+
+var deckOfCards=new Stack();
+deckOfCards.Push(new Card("A-d"));
+deckOfCards.Push(new Card("k-h"));
+
+deckOfCards.Push("Joker");
+deckOfCards.Push(new Card("J-h"));
+
+foreach(var i in deckOfCards){
+Console.WriteLine(i);
+}
+
+var myCard=deckOfCards.Pop();
+Console.WriteLine(myCard);
+myCard=deckOfCards.Pop();
+Console.WriteLine(myCard);
+
+// Generics List<T>
+var listOfCards=new List<Card>();
+
+listOfCards.Add(new Card("A-d"));
+listOfCards.Add(new Card("J-d"));
+listOfCards.Add(new Card("9-c"));
+listOfCards.Add(new Card("8-s"));
+
+Console.WriteLine(listOfCards.GetType());
+foreach(var i in listOfCards){
+    Console.WriteLine(i.GetType());
+    Console.WriteLine(i);
+}
+Console.WriteLine(listOfCards[2]);
+Console.WriteLine(listOfCards[3]);
+
+//inserting a card in the list of cards
+var ThreeHearts=new Card("3-h");
+listOfCards.Insert(3,ThreeHearts);
+
+Console.WriteLine(listOfCards[3]);
+
+//find the index
+Console.WriteLine(listOfCards.IndexOf(ThreeHearts));
+
+//find an element at some index
+Console.WriteLine(listOfCards.ElementAt(1));
+
+//Generics Dictionary<TKey,TValue>
+var exts=new Dictionary<string,string>();
+exts.Add("jpg","JPeg compressed format");
+exts.Add("mp3","Compressed Music");
+exts.Add("txt","Compressed text");
+
+//exts.Add("mp3","SOund Effects");
+
+//exts.Add("Card",new Card("J-h"));
+
+foreach (var i in exts)
+{
+    Console.WriteLine(i);
+}
+Console.WriteLine(exts["mp3"]);
+
+
+//Hashset generic
+var set=new HashSet<Card>();
+
+set.Add(new Card("J-c"));
+set.Add(new Card("A-c"));
+set.Add(new Card("9-d"));
+
+
+set.Add(ThreeHearts);
+
+set.Add(ThreeHearts);
+
+foreach(var i in set){
+Console.WriteLine(i);}
+
+//own generic type
+
 }
     }
     
